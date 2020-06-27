@@ -248,12 +248,68 @@
 
             /*Responsive design*/
             @media only screen and (max-width: 600px) {
+                .content{
+                    position: absolute;
+                    top: 10vh;
+                    left: 7vw;
+                }
+                .intro{
+                    font-size: 2rem;
+                }
+                .introp{
+                    font-size: 1.1rem;
+                    width: 70%;
+                    height: 10rem;
+                    overflow: scroll;
+                }
                 .active{
                     display : flex;
                     flex-direction: row;
                 }
+                .box{
+               /* align-items: top;
+                display: flex;
+                justify-content: center;
+                backdrop-filter: grayscale(100%);
+                background-color: rgba(255, 255, 255, 0.5);
+                flex-direction: column;*/
+                margin-top: 4vh;
+            }
+
+            .box > p{
+                border-radius: 5px;
+                font-family: sans-serif;
+                line-height: 1; 
+                max-width: 100%;
+                max-height: 50%;
+                padding: 0.5vw 2vw;
+            }
+            #contact > h1{
+                font-size: 2rem; 
+            }
             }    
-            
+         
+
+            @media only screen and (min-width: 2000px) {
+                .content{
+                    position: absolute;
+                    top: 5vh;
+                    left: 10vw;
+                }
+                .intro{
+                    font-size: 7rem;
+                }
+                .introp{
+                    font-size: 5rem;
+                    width: 60%;
+                    height: 10rem;
+                    overflow: scroll;
+                }
+                .active{
+                    display : flex;
+                    flex-direction: row;
+                }
+            }
             /*Footer*/
             footer{
                 display: flex;
@@ -277,6 +333,7 @@
                 stroke-width: 2px;
                 transition: all 0.25s ease;
             }
+
             .icon >:hover, :focus {
                 fill: rgb(32, 178, 170);
                 transition: all 0.15s ease;
@@ -673,7 +730,8 @@
                     <span style="margin-left:0.1vw"> 60xx Abel St.,<br>
                     San Jose, California,<br>
                     USA 951xxx.<br>
-                    </span></p>
+                    </span>
+                </p>
                 <p><i class="fa fa-phone" style="font-size:48px;color:lightseagreen"></i>&nbsp;+1 571-291-5053</p> 
                 <p><i class="fa fa-envelope" style="font-size:48px;color:lightseagreen"></i>&nbsp;nimushakavilavanya@gmail.com</p> 
             </div>
@@ -707,10 +765,10 @@
                         <use xlink:href="#twitter"></use>
                         </svg>
 
-                        <svg class="icon" viewBox="0 0 216 216">
+                        <svg class="icon" viewBox="0 0 216 216" onclick="location.href='https://www.linkedin.com/in/lavanya-nimushakavi/';">
                         <use xlink:href="#linkedin"></use>
                         </svg>
-                        <svg class="icon" viewBox="0 0 216 216">
+                        <svg class="icon" viewBox="0 0 216 216" onclick="location.href='https://github.com/lavnimusha';">
                         <use xlink:href="#github"></use>
                         </svg>
                     </div>

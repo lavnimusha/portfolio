@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <style>
+            body{
+                font-family: 'Lato', sans-serif;
+            }
+            .overlay {
+                height: 100%;
+                width: 100%;
+                display: none;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: rgba(32,178,170, 0.6);
+            }
+
+            .overlay-content {
+                position: relative;
+                top: 25%;
+                width: 100%;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .overlay a {
+                padding: 8px;
+                text-decoration: none;
+                font-size: 36px;
+                color: seashell ;
+                display: block;
+                transition: 0.3s;
+            }
+
+            .overlay a:hover, .overlay a:focus {
+                color: #f1f1f1;
+                text-shadow: 5px 5px 10px black;
+            }
+
+            .overlay .closebtn {
+                position: absolute;
+                top: 20px;
+                right: 45px;
+                font-size: 60px;
+            }
+            canvas{
+                flex-grow: 0.8;
+                
+            }
+
+            .intro{
+                font-size: 4rem;
+            }
+            .introp{
+                font-size: 1.1rem;
+                width: 50%;
+                height: 10rem;
+                overflow: scroll;
+            }
+            @media screen and (max-height: 450px) {
+                .overlay a {font-size: 20px}
+                .overlay .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+                }
+            }
+            .content{
+                position: absolute;
+                top: 25vh;
+                left: 10vw;
+            }
+            .home_content{
+                display: flex;
+                flex-direction: column;
+            }
+            .download{
+                flex-grow: 0.5;
+                padding: 1vw;
+                background-color: rgba(32, 178, 170, 0.8);
+                margin: 0 auto;
+                border-radius: 20px;
+                border-style: none; 
+                margin-bottom: 3vh;
+            }
+            .download > a{
+                text-decoration: none;
+                color: white;
+                font-size: 1.2em;
+                
+            }
+            .download:hover{
+                box-shadow: 2px 2px #D3D3D3;
+            }
+
+            /*Contact page*/
+            
+            #contact{
+                background-image: url('https://www.planetware.com/photos-large/USCA/california-san-francisco-golden-gate-bridge.jpg');
+                background-repeat:   no-repeat; 
+                background-size: cover;
+                background-attachment: fixed;
+                height: 100vh; 
+            }
+
+            #contact > h1{
+                font-family: 'Dancing Script', cursive;
+                color: white;
+                line-height: 2em;
+                font-size: 3rem;
+                margin-top: 0.3vh; 
+                text-align: center;
+            }
+
+            .box{
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                backdrop-filter: grayscale(100%);
+                background-color: rgba(255, 255, 255, 0.5);
+                flex-direction: column;
+                margin-top: 15vh;
+            }
+
+            .box > p{
+                border-radius: 5px;
+                font-family: sans-serif;
+                text-align: center;
+                line-height: 2; 
+                max-width: 50%;
+                max-height: 50%;
+                padding: 0.5vw 2vw;
+            }
+            /* page 2*/
+            #my_work{
+                background-color: rgb(245,245,245);
+                padding: 1vh 0 0 0;
+            }    
+            
+            /*buttons*/
+            .arrow {
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+            }
+
+            .btn_left,.btn_right{
+                border-radius: 50%;
+                border: none;
+                padding: 5px;
+                background-color: rgb(32, 178, 170);
+                width: 50px;
+                height: 50px;
+                margin: 1vw;
+                outline-style: none;
+            }
+
+            .right {
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+            }
+
+            .left {
+                transform: rotate(135deg);
+                -webkit-transform: rotate(135deg);
+            }
+
+            .buttons{
+                display: flex;
+                justify-content: center;
+            }
+
+        /*slide*/
+            .slide{
+                width: 100%;
+                height: 98%;
+                display: inline;
+                overflow-x: scroll;
+            }
+            .slides_container{
+                width: 70vw;
+                height: 65vh;
+                overflow: auto;
+                white-space: nowrap;
+                margin: 5% auto;
+            }
+
+            .active{
+                display : inline;
+            }
+
+            /* Card */
+            .card{
+                width: 48%;
+                height: 98%;
+                display: inline-flex;
+                z-index: 2;
+                box-shadow: 5px 5px #D3D3D3;
+                flex-direction: column;
+                margin-right: 2vw;
+                
+            }
+
+            .card-title{
+                font-weight: 900;
+                letter-spacing: 0.1em;
+            }
+
+            .card-iframe-top{
+                flex-grow: 1;
+            }
+
+            .card-body{
+                flex-grow: 1;
+                padding: 2%;
+            }
+
+            .card-body > p{
+                white-space: initial;
+                letter-spacing: 0.1em;
+            }
+
+            .btn{
+                background-color: rgb(32,178,170);
+                color: white;
+                border: none;
+                padding: 4%;
+                letter-spacing: 0.1em;
+            }
+            .btn:hover, .btn_left:hover, .btn_right:hover{
+                outline-style: none;
+                box-shadow: 0.3vw 0.3vw #D3D3D3;
+
+            }
+
+            /*Responsive design*/
+            @media only screen and (max-width: 600px) {
+                .active{
+                    display : flex;
+                    flex-direction: row;
+                }
+            }    
+            
+            /*Footer*/
+            footer{
+                display: flex;
+                justify-content: center;
+            }
+
+            .icons {
+                width: 800px;
+                padding: 20px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+            }
+
+            .icon{
+                width: 5vw;
+                height: 5vw;
+                padding: 10px;
+                fill: rgba(#b3c33a, 0);
+                stroke: #b3c33a;
+                stroke-width: 2px;
+                transition: all 0.25s ease;
+            }
+            .icon >:hover, :focus {
+                fill: rgb(32, 178, 170);
+                transition: all 0.15s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <section id="home"> 
+        <span style="font-size:40px;margin-top:2vw;margin-right: 2vw;float:right;color:teal;cursor:pointer" onclick="openNav()">&#9776;</span>
+        
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="home_content">
+                <div class = 'content'>
+                        <h1 class='intro'>"Hello! I am Lavanya"</h1>
+                        <p class='introp'>  Lorem ipsum dolor sit amet, mel falli accommodare ut. 
+                        Te partem democritum comprehensam mel, et tractatos maluisset his,
+                            principes repudiare ut qui. Ipsum insolens aliquando usu cu, 
+                            ipsum nonumes interesset has cu. 
+                        Mea cu quodsi phaedrum honestatis, cu eirmod convenire mnesarchum eum.</p>
+                </div>
+                <canvas></canvas>
+        <button class = 'download'><a href="resume.pdf" target='blank' download>Download Resume</a></button>
+        </div>
+    </section>
+  <section id = 'my_work'>
+            <div class="main_container">
+
+                <!--First slide-->
+            <!--<h1 class = "slides_heading">My work</h1>-->    
+                <div class = "slides_container" >
+                    
+                <div class = "slide " data-key = 1>
+                        
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/Drum-Kit/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/Drum-Kit/';">Full View</button>
+                                
+                                </div>
+    
+                        </div>
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/skewed-carousel/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn" onclick="location.href='https://lavnimusha.github.io/skewed-carousel/';">Full View</button>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                </div>
+                <div class = "slide" data-key = 2>
+                            
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/Styling-Nav-bar/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/Styling-Nav-bar/';">Full View</button>
+                                
+                                </div>
+    
+                        </div>
+                    
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/student-db/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn" onclick="location.href='https://lavnimusha.github.io/student-db/';">Full View</button>
+                            
+                            </div>
+                        </div>
+                </div>    
+                <div class = "slide" data-key = 3>
+                            
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/calculator/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/calculator/';">Full View</button>
+                                
+                                </div>
+                        </div>
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/css_fun/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn" onclick="location.href='https://lavnimusha.github.io/css_fun/';">Full View</button>
+                            
+                            </div>
+                    </div>
+                </div>    
+                <div class = "slide" data-key = 4>
+                        
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/ajaxtypeahead/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/ajaxtypeahead/';">Full View</button>
+                                
+                                </div>
+    
+                        </div>
+                    
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/indexDB/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn" onclick="location.href='https://lavnimusha.github.io/indexDB/';">Full View</button>
+                            
+                            </div>
+                    </div>
+                </div>
+                <div class = "slide" data-key = 5>
+                        
+                            <div class="card">
+                        
+                                    <iframe class="card-iframe-top" src="https://lavnimusha.github.io/todo-list-with-local-storage/" 
+                                        width=100% height=100%> 
+                                    </iframe>
+        
+                                    <div class="card-body">
+                                        
+                                        <h4 class="card-title">Skewed Carousel</h4>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                        <button class="btn" onclick="location.href='https://lavnimusha.github.io/todo-list-with-local-storage/';">Full View</button>
+                                    
+                                    </div>
+                            </div>
+                        
+                            <div class="card">
+                                
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/slide-in-on-scroll/" 
+                                    width=100% height=100%> 
+                                </iframe>
+        
+                                <div class="card-body">
+                                
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/slide-in-on-scroll/';">Full View</button>
+                                
+                                </div>
+                            </div>
+                </div>
+                <div class = "slide" data-key = 6>
+                        
+                            <div class="card">
+                        
+                                    <iframe class="card-iframe-top" src="https://lavnimusha.github.io/text-shadow/" 
+                                        width=100% height=100%> 
+                                    </iframe>
+        
+                                    <div class="card-body">
+                                        
+                                        <h4 class="card-title">Skewed Carousel</h4>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                        <button class="btn" onclick="location.href='https://lavnimusha.github.io/text-shadow/';">Full View</button>
+                                    
+                                    </div>
+        
+                            </div>
+                            <div class="card">
+                                
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/indexDB/" 
+                                    width=100% height=100%> 
+                                </iframe>
+        
+                                <div class="card-body">
+                                
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                    <button class="btn"onclick="location.href='https://lavnimusha.github.io/indexDB/';">Full View</button>
+                                
+                                </div>
+                        </div>
+                </div>        
+                <div class = "slide" data-key = 7>
+            
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/sticky-nav/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/sticky-nav/';">Full View</button>
+                            
+                                </div>
+                        </div>
+                    
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/Speech-Synthesis/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn"onclick="location.href='https://lavnimusha.github.io/Speech-Synthesis/';">Full View</button>
+                            
+                            </div>
+                    </div>
+                </div>
+                <div class = "slide" data-key = 8>
+            
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/clock/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn"onclick="location.href='https://lavnimusha.github.io/clock/';">Full View</button>
+                            
+                                </div>
+                        </div>
+                    
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/carousel/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn" onclick="location.href='https://lavnimusha.github.io/carousel/';">Full View</button>
+                            
+                            </div>
+                    </div>
+                </div>
+                <div class = "slide" data-key = 9>
+            
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/secret-code/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/secret-code/';">Full View</button>
+                            
+                                </div>
+                        </div>
+                    
+                    
+                        <div class="card">
+                            
+                            <iframe class="card-iframe-top" src="https://lavnimusha.github.io/paintbrush/" 
+                                width=100% height=100%> 
+                            </iframe>
+    
+                            <div class="card-body">
+                            
+                                <h4 class="card-title">Skewed Carousel</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                <button class="btn" onclick="location.href='https://lavnimusha.github.io/paintbrush/';">Full View</button>
+                            
+                            </div>
+                    </div>
+                </div>
+                <div class = "slide" data-key = 10>
+                            
+                        <div class="card">
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/tic-tac-toe/" 
+                                    width=100% height=100%> 
+                                </iframe>
+    
+                                <div class="card-body">
+                                    
+                                    <h4 class="card-title">Skewed Carousel</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/tic-tac-toe/';">Full View</button>
+                                
+                                </div>
+                        </div>
+                    
+
+                </div>
+                </div>
+                <div class = "buttons">
+                        <button class = "btn_left"><i class="arrow left"></i></button>
+                        <button class = "btn_right"><i class="arrow right"></i></button>
+                </div>
+            
+            </div>
+        </section>
+        
+        <section id='contact'>
+            
+            <h1>Let's connect and bulid something new...</h1>
+            <div class = 'box'>
+                <p>
+                    <i class="fa fa-map-marker" style="font-size:48px;color:lightseagreen"></i>
+                    <span style="margin-left:0.1vw"> 60xx Abel St.,<br>
+                    San Jose, California,<br>
+                    USA 951xxx.<br>
+                    </span></p>
+                <p><i class="fa fa-phone" style="font-size:48px;color:lightseagreen"></i>&nbsp;+1 571-291-5053</p> 
+                <p><i class="fa fa-envelope" style="font-size:48px;color:lightseagreen"></i>&nbsp;nimushakavilavanya@gmail.com</p> 
+            </div>
+            
+        </section>
+        <footer>
+                    <svg width="0" height="0" viewBox="0 0 216 216">
+                        <path id="twitter" d="M214.6,0H1.4C0.6,0,0,0.6,0,1.4v213.1c0,0.8,0.6,1.4,1.4,1.4h213.1c0.8,0,1.4-0.6,1.4-1.4V1.4
+                            C216,0.6,215.4,0,214.6,0z M181,70.6c0.1,1.6,0.1,3.2,0.1,4.9c0,49.8-37.9,107.2-107.2,107.2c-21.3,0-41.1-6.2-57.7-16.9
+                            c2.9,0.3,5.9,0.5,9,0.5c17.6,0,33.9-6,46.8-16.1c-16.5-0.3-30.4-11.2-35.2-26.2c2.3,0.4,4.7,0.7,7.1,0.7c3.4,0,6.8-0.5,9.9-1.3
+                            c-17.2-3.5-30.2-18.7-30.2-36.9c0-0.2,0-0.3,0-0.5c5.1,2.8,10.9,4.5,17.1,4.7c-10.1-6.8-16.8-18.3-16.8-31.4
+                            c0-6.9,1.9-13.4,5.1-18.9c18.6,22.8,46.3,37.8,77.6,39.4c-0.6-2.8-1-5.6-1-8.6c0-20.8,16.9-37.7,37.7-37.7
+                            c10.8,0,20.6,4.6,27.5,11.9c8.6-1.7,16.6-4.8,23.9-9.1c-2.8,8.8-8.8,16.2-16.6,20.8c7.6-0.9,14.9-2.9,21.6-5.9
+                            C194.8,58.6,188.4,65.2,181,70.6z"/>
+                        
+                        <path id="linkedin" d="M214.6,0H1.4C0.6,0,0,0.6,0,1.4v213.1c0,0.8,0.6,1.4,1.4,1.4h213.1c0.8,0,1.4-0.6,1.4-1.4V1.4
+                            C216,0.6,215.4,0,214.6,0z M65.3,185.2H33.3V82.1h32.1V185.2z M49.3,68C39,68,30.7,59.7,30.7,49.4c0-10.2,8.3-18.6,18.6-18.6
+                            c10.2,0,18.6,8.3,18.6,18.6C67.8,59.7,59.5,68,49.3,68z M185.3,185.2h-32V135c0-12-0.2-27.3-16.7-27.3c-16.7,0-19.2,13-19.2,26.5v51
+                            h-32V82.1h30.7v14.1h0.4c4.3-8.1,14.7-16.6,30.3-16.6c32.4,0,38.4,21.3,38.4,49.1V185.2z"/>
+                        
+                        <path id="github" d="M214.6,0H1.4C0.6,0,0,0.6,0,1.4v213.1c0,0.8,0.6,1.4,1.4,1.4h213.1c0.8,0,1.4-0.6,1.4-1.4V1.4
+                            C216,0.6,215.4,0,214.6,0z M135.3,198.2v-21.6c0-10.7-4.6-16.4-8.9-19.3c24.1-2.6,50-11.2,50-52.9c0-11.7-4.1-21.3-11.1-28.7
+                            c1.2-2.8,4.8-13.6-1.1-28.4c0,0-8.9-2.9-29.3,11c-8.6-2.3-17.8-3.5-26.8-3.6c-9.1,0.1-18.3,1.3-26.8,3.6c-20.4-13.8-29.4-11-29.4-11
+                            C46,62,49.7,72.8,50.8,75.6c-6.8,7.4-10.9,17-10.9,28.7c0,41.8,25.8,50.5,50,53c-1.7,0.5-6.9,1.9-8.3,8.6
+                            c-4.6,2.2-19.3,7.8-28.3-7.5c0,0-5-9-14.5-9.7c0,0-9.2-0.1-0.6,5.7c0,0,6.2,2.9,10.4,13.8c0,0,5.6,18.6,32.4,12.5v17.3
+                            c-37.5-12.2-64.7-47.2-64.7-88.5c0-50.7,41.1-91.8,91.7-91.8c50.7,0,91.9,41.1,91.9,91.8C199.8,150.9,172.7,185.8,135.3,198.2z"/>
+                    </svg>
+                    
+                    <div class="icons">
+                        <svg class="icon" viewBox="0 0 216 216">
+                        <use xlink:href="#twitter"></use>
+                        </svg>
+
+                        <svg class="icon" viewBox="0 0 216 216">
+                        <use xlink:href="#linkedin"></use>
+                        </svg>
+                        <svg class="icon" viewBox="0 0 216 216">
+                        <use xlink:href="#github"></use>
+                        </svg>
+                    </div>
+        </footer>
+        <script>
+        
+        function openNav() {
+            document.getElementById("myNav").style.display = "block";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.display = "none";
+        }
+
+        
+        var canvas = document.querySelector('canvas');
+        var context = canvas.getContext('2d');
+        const canvasWidth = canvas.width = window.innerWidth;
+        const canvasHeight = canvas.height = window.innerHeight;
+
+        var x      = 0.15 * window.innerHeight;
+        var y      = 0.15 * window.innerHeight;
+        var width  = 0.2 * window.innerWidth;
+        var height = 0.2* window.innerWidth;
+        var cx     = x + 0.5 * width;   // x of shape center
+        var cy     = y + 0.5 * height;  // y of shape center
+        class Square {
+            constructor(){
+            this.rotate = 0 
+            }
+        }
+        var square = new Square();
+        function movement(){
+            if(square.rotate >= 0.9)
+                square.rotate = 0;
+            else 
+            square.rotate = square.rotate+0.1;
+            return square.rotate;
+        }
+     
+        function render(){
+            context.fillStyle = "white";
+            context.fillRect(x, y, width, height);  //draw normal shape
+            context.translate(cx, cy);              //translate to center of shape
+            context.rotate( (Math.PI / 180) * movement());  //rotate 25 degrees.
+            context.translate(-cx, -cy);            //translate center back to 0,0
+            context.fillStyle = "lightseagreen";
+            context.fillRect(x, y, width, height);
+            context.restore();
+            window.requestAnimationFrame(render);
+        }
+        window.requestAnimationFrame(render);
+
+        /*carousel page*/
+        let container = document.querySelector('.slides_container');
+        let slides = document.querySelectorAll('.slide');
+        let left = document.querySelector('.btn_left');
+        let right = document.querySelector('.btn_right'); 
+        let cnt = 1;
+        console.log(container)
+
+        left.addEventListener('click',(event)=>{event.preventDefault;handler(-1)});
+        right.addEventListener('click',(event)=>{event.preventDefault;handler(+1)});
+        function handler(add){
+            
+            if(cnt < 10  && cnt > 0 ){
+                if(!(cnt === 1  &&  add === -1 ))
+                cnt += add;
+
+            }
+            else    
+                cnt = 1;
+                slides.forEach(slide => {
+
+                 if(cnt == slide.getAttribute('data-key')){
+                    //console.log(slide.outerHTML);
+                    container.innerHTML = slide.innerHTML;
+                    slide.classList.add ('active');
+                }
+               else{
+                console.log(slide);
+                    slide.classList.remove('active') ; 
+                }
+            });
+                
+        }
+</script>
+
+    </body>
+</html>

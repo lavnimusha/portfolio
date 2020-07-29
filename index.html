@@ -10,11 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <style>
             body{
-                font-family: 'Lato', sans-serif;
+                font-family: 'Noto Sans', sans-serif;
             }
             .overlay {
                 height: 100%;
@@ -61,13 +60,18 @@
             }
 
             .intro{
-                font-size: 4rem;
+                font-size: 3rem;
             }
             .introp{
                 font-size: 1.1rem;
                 width: 50%;
                 height: 10rem;
+                opacity: 0.5;
                 overflow: scroll;
+            }
+            .fa{
+                font-size:48px;
+                color:lightseagreen;
             }
             @media screen and (max-height: 450px) {
                 .overlay a {font-size: 20px}
@@ -80,11 +84,13 @@
             .content{
                 position: absolute;
                 top: 25vh;
-                left: 10vw;
+                left: 20vw;
+                
             }
             .home_content{
                 display: flex;
                 flex-direction: column;
+                
             }
             .download{
                 flex-grow: 0.5;
@@ -93,7 +99,7 @@
                 margin: 0 auto;
                 border-radius: 20px;
                 border-style: none; 
-                margin-bottom: 3vh;
+                
             }
             .download > a{
                 text-decoration: none;
@@ -186,8 +192,8 @@
         /*slide*/
             .slide{
                 width: 100%;
-                height: 98%;
-                display: inline;
+                height: 100%;
+                display: inline-flex;
                 overflow-x: scroll;
             }
             .slides_container{
@@ -205,10 +211,10 @@
             /* Card */
             .card{
                 width: 48%;
-                height: 98%;
+                height: 99%;
                 display: inline-flex;
                 z-index: 2;
-                box-shadow: 5px 5px #D3D3D3;
+                box-shadow: 0 0 2px 2px #D3D3D3;
                 flex-direction: column;
                 margin-right: 2vw;
                 
@@ -229,8 +235,10 @@
             }
 
             .card-body > p{
+                opacity: 0.5;
+                font-size: 0.9em;
                 white-space: initial;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.01em;
             }
 
             .btn{
@@ -248,18 +256,22 @@
 
             /*Responsive design*/
             @media only screen and (max-width: 600px) {
+                .fa{
+                font-size:30px;
+                color:lightseagreen;
+                }
                 .content{
                     position: absolute;
                     top: 10vh;
-                    left: 7vw;
+                    left: 9vw;
                 }
                 .intro{
                     font-size: 2rem;
                 }
                 .introp{
-                    font-size: 1.1rem;
+                    font-size: 1rem;
                     width: 70%;
-                    height: 10rem;
+                    height: 11rem;
                     overflow: scroll;
                 }
                 .active{
@@ -275,7 +287,7 @@
                 flex-direction: column;*/
                 margin-top: 4vh;
             }
-
+            .slides_container{width:95vw}
             .box > p{
                 border-radius: 5px;
                 font-family: sans-serif;
@@ -287,6 +299,7 @@
             #contact > h1{
                 font-size: 2rem; 
             }
+            
             }    
          
 
@@ -359,14 +372,13 @@
         <div class="home_content">
                 <div class = 'content'>
                         <h1 class='intro'>"Hello! I am Lavanya"</h1>
-                        <p class='introp'>  Lorem ipsum dolor sit amet, mel falli accommodare ut. 
-                        Te partem democritum comprehensam mel, et tractatos maluisset his,
-                            principes repudiare ut qui. Ipsum insolens aliquando usu cu, 
-                            ipsum nonumes interesset has cu. 
-                        Mea cu quodsi phaedrum honestatis, cu eirmod convenire mnesarchum eum.</p>
+                        <p class='introp'>  Creative, motivated front-end developer with recent experience in website development. 
+                            Worked for Altran, HCL and Nomus comm systems as network 
+                            software developer for three plus years.
+                        </p>
                 </div>
                 <canvas></canvas>
-        <button class = 'download'><a href="resume.pdf" target='blank' download>Download Resume</a></button>
+        <button class = 'download'><a href="https://lavnimusha.github.io/resume/" target='blank' download>Download Resume</a></button>
         </div>
         </section>
         <section id = 'my_work'>
@@ -386,9 +398,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">Drum Kit</h4>
+                                    <p class="card-text">Drum notes on keyboard </p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/Drum-Kit/';">Full View</button>
                                 
                                 </div>
@@ -404,8 +415,7 @@
                             <div class="card-body">
                             
                                 <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">Click, Drag and Scroll!</p>
                                 <button class="btn" onclick="location.href='https://lavnimusha.github.io/skewed-carousel/';">Full View</button>
                             
                             </div>
@@ -423,9 +433,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">Styling Navigation bar</h4>
+                                    <p class="card-text">Web app with smooth navigation.</p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/Styling-Nav-bar/';">Full View</button>
                                 
                                 </div>
@@ -441,9 +450,8 @@
     
                             <div class="card-body">
                             
-                                <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <h4 class="card-title">Student Database</h4>
+                                <p class="card-text">Student database using IndexedDB</p>
                                 <button class="btn" onclick="location.href='https://lavnimusha.github.io/student-db/';">Full View</button>
                             
                             </div>
@@ -459,9 +467,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">Calculator</h4>
+                                    <p class="card-text">Calculator application using React</p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/calculator/';">Full View</button>
                                 
                                 </div>
@@ -475,9 +482,8 @@
     
                             <div class="card-body">
                             
-                                <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <h4 class="card-title">CSS fun!</h4>
+                                <p class="card-text">CSS fun game!</p>
                                 <button class="btn" onclick="location.href='https://lavnimusha.github.io/css_fun/';">Full View</button>
                             
                             </div>
@@ -493,9 +499,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">AJAX type ahead</h4>
+                                    <p class="card-text">Displays city names which contain typed word</p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/ajaxtypeahead/';">Full View</button>
                                 
                                 </div>
@@ -511,9 +516,8 @@
     
                             <div class="card-body">
                             
-                                <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <h4 class="card-title">Sticky Notes</h4>
+                                <p class="card-text">IndexedDB based sticky notes.</p>
                                 <button class="btn" onclick="location.href='https://lavnimusha.github.io/indexDB/';">Full View</button>
                             
                             </div>
@@ -529,9 +533,8 @@
         
                                     <div class="card-body">
                                         
-                                        <h4 class="card-title">Skewed Carousel</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
+                                        <h4 class="card-title">Todo list</h4>
+                                        <p class="card-text">Todo list with local storage</p>
                                         <button class="btn" onclick="location.href='https://lavnimusha.github.io/todo-list-with-local-storage/';">Full View</button>
                                     
                                     </div>
@@ -545,9 +548,8 @@
         
                                 <div class="card-body">
                                 
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
+                                    <h4 class="card-title">Slide-In-On-Scroll</h4>
+                                    <p class="card-text">Web app with pictures sliding in on scroll</p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/slide-in-on-scroll/';">Full View</button>
                                 
                                 </div>
@@ -563,29 +565,28 @@
         
                                     <div class="card-body">
                                         
-                                        <h4 class="card-title">Skewed Carousel</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
+                                        <h4 class="card-title">Text Shadow fun</h4>
+                                        <p class="card-text">Text Shadow fun.</p>
                                         <button class="btn" onclick="location.href='https://lavnimusha.github.io/text-shadow/';">Full View</button>
                                     
                                     </div>
         
                             </div>
                             <div class="card">
-                                
-                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/indexDB/" 
+                    
+                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/tic-tac-toe/" 
                                     width=100% height=100%> 
                                 </iframe>
-        
+    
                                 <div class="card-body">
-                                
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <button class="btn"onclick="location.href='https://lavnimusha.github.io/indexDB/';">Full View</button>
+                                    
+                                    <h4 class="card-title">Tic-Tac-Toe</h4>
+                                    <p class="card-text">Tic-Tac-Toe with React</p>
+                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/tic-tac-toe/';">Full View</button>
                                 
                                 </div>
-                        </div>
+                            </div>
+                        
                 </div>        
                 <div class = "slide" data-key = 7>
             
@@ -597,9 +598,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">Sticky Nav</h4>
+                                    <p class="card-text">Web page with sticky nav bar. </p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/sticky-nav/';">Full View</button>
                             
                                 </div>
@@ -614,9 +614,8 @@
     
                             <div class="card-body">
                             
-                                <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <h4 class="card-title">Speech Synthesis</h4>
+                                <p class="card-text">Converting speech to text.</p>
                                 <button class="btn"onclick="location.href='https://lavnimusha.github.io/Speech-Synthesis/';">Full View</button>
                             
                             </div>
@@ -632,9 +631,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">Clock</h4>
+                                    <p class="card-text">Simple Clock to display current time.</p>
                                     <button class="btn"onclick="location.href='https://lavnimusha.github.io/clock/';">Full View</button>
                             
                                 </div>
@@ -649,9 +647,8 @@
     
                             <div class="card-body">
                             
-                                <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <h4 class="card-title">Carousel</h4>
+                                <p class="card-text">Carousel with intersection observer</p>
                                 <button class="btn" onclick="location.href='https://lavnimusha.github.io/carousel/';">Full View</button>
                             
                             </div>
@@ -667,9 +664,8 @@
     
                                 <div class="card-body">
                                     
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                    <h4 class="card-title">Secret code magic!</h4>
+                                    <p class="card-text">Type random text containing secret code and see magic </p>
                                     <button class="btn" onclick="location.href='https://lavnimusha.github.io/secret-code/';">Full View</button>
                             
                                 </div>
@@ -684,33 +680,12 @@
     
                             <div class="card-body">
                             
-                                <h4 class="card-title">Skewed Carousel</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
+                                <h4 class="card-title">Paint Brush</h4>
+                                <p class="card-text">Web app to write and clear features.</p>
                                 <button class="btn" onclick="location.href='https://lavnimusha.github.io/paintbrush/';">Full View</button>
                             
                             </div>
                     </div>
-                </div>
-                <div class = "slide" data-key = 10>
-                            
-                        <div class="card">
-                    
-                                <iframe class="card-iframe-top" src="https://lavnimusha.github.io/tic-tac-toe/" 
-                                    width=100% height=100%> 
-                                </iframe>
-    
-                                <div class="card-body">
-                                    
-                                    <h4 class="card-title">Skewed Carousel</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <button class="btn" onclick="location.href='https://lavnimusha.github.io/tic-tac-toe/';">Full View</button>
-                                
-                                </div>
-                        </div>
-                    
-
                 </div>
                 </div>
                 <div class = "buttons">
@@ -726,14 +701,14 @@
             <h1>Let's connect and bulid something new...</h1>
             <div class = 'box'>
                 <p>
-                    <i class="fa fa-map-marker" style="font-size:48px;color:lightseagreen"></i>
+                    <i class="fa fa-map-marker" ></i>
                     <span style="margin-left:0.1vw"> 60xx Abel St.,<br>
                     San Jose, California,<br>
                     USA 951xxx.<br>
                     </span>
                 </p>
-                <p><i class="fa fa-phone" style="font-size:48px;color:lightseagreen"></i>&nbsp;+1 571-291-5053</p> 
-                <p><i class="fa fa-envelope" style="font-size:48px;color:lightseagreen"></i>&nbsp;nimushakavilavanya@gmail.com</p> 
+                <p><i class="fa fa-phone"></i>&nbsp;+1 571-291-5053</p> 
+                <p><i class="fa fa-envelope"></i>&nbsp;nimushakavilavanya@gmail.com</p> 
             </div>
             
         </section>
@@ -788,8 +763,8 @@
         const canvasWidth = canvas.width = window.innerWidth;
         const canvasHeight = canvas.height = window.innerHeight;
 
-        var x      = 0.15 * window.innerHeight;
-        var y      = 0.15 * window.innerHeight;
+        var x      = 0.15 * window.innerWidth;
+        var y      = 0.15 * window.innerWidth;
         var width  = 0.2 * window.innerWidth;
         var height = 0.2* window.innerWidth;
         var cx     = x + 0.5 * width;   // x of shape center
@@ -833,7 +808,7 @@
         right.addEventListener('click',(event)=>{event.preventDefault;handler(+1)});
         function handler(add){
             
-            if(cnt < 10  && cnt > 0 ){
+            if(cnt < 9  && cnt > 0 ){
                 if(!(cnt === 1  &&  add === -1 ))
                 cnt += add;
 
@@ -842,12 +817,11 @@
                 cnt = 1;
                 slides.forEach(slide => {
 
-                 if(cnt == slide.getAttribute('data-key')){
-                    //console.log(slide.outerHTML);
+                if(cnt == slide.getAttribute('data-key')){
                     container.innerHTML = slide.innerHTML;
                     slide.classList.add ('active');
                 }
-               else{
+                else{
                 console.log(slide);
                     slide.classList.remove('active') ; 
                 }
